@@ -1,0 +1,21 @@
+{
+  "name": "jsdoc-react",
+  "version": "0.1.0",
+  "description": "A JSDoc template built with React.",
+  "main": "publish.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jsdoc"
+  ],
+  "author": "Josh Bassett",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  },
+  "dependencies": {
+    "fkit": "^0.5.1",
+    "react": "^0.11.2"
+  }
+}
