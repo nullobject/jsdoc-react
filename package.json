@@ -2,20 +2,49 @@
   "name": "jsdoc-react",
   "version": "0.1.0",
   "description": "A JSDoc template built with React.",
-  "main": "publish.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "jsdoc"
-  ],
-  "author": "Josh Bassett",
+  "homepage": "https://github.com/nullobject/jsdoc-react",
+  "author": "Josh Bassett <josh.bassett@gmail.com> (http://joshbassett.info)",
   "license": "MIT",
+  "keywords": [
+    "jsdoc",
+    "react",
+    "template"
+  ],
+  "main": "./publish.js",
+  "files": [
+    "./publish.js",
+    "./src"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nullobject/jsdoc-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nullobject/jsdoc-react/issues"
+  },
   "devDependencies": {
-    "mocha": "^1.21.4"
+    "chai": "^1.9.1",
+    "jsdoc": "^3.3.0-alpha9",
+    "jshint": "^2.5.5",
+    "mocha": "^1.21.4",
+    "sinon": "^1.10.3",
+    "sinon-chai": "^2.5.0",
+    "webpack": "^1.4.0-beta9"
   },
   "dependencies": {
+    "bootstrap": "^3.2.0",
+    "css-loader": "^0.8.0",
+    "extract-text-webpack-plugin": "^0.3.1",
+    "file-loader": "^0.7.2",
     "fkit": "^0.5.1",
-    "react": "^0.11.2"
+    "jsx-loader": "^0.11.0",
+    "less": "^1.7.5",
+    "less-loader": "^0.7.7",
+    "react": "^0.11.2",
+    "style-loader": "^0.8.0",
+    "url-loader": "^0.5.5"
   }
 }
