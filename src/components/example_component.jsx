@@ -15,7 +15,7 @@ module.exports = React.createClass({
       /* jshint ignore:start */
       <section className="example">
         <h4>Example</h4>
-        <pre><code>{this.props.example}</code></pre>
+        <pre><code className="lang-js">{this.props.example}</code></pre>
       </section>
       /* jshint ignore:end */
     );
