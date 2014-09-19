@@ -10,6 +10,8 @@ var React = require('react');
  * @class LabelComponent
  */
 module.exports = React.createClass({
+  displayName: 'LabelComponent',
+
   render: function() {
     var s = [this.props.className, 'label', 'label-' + this.props.type].join(' ');
     return (

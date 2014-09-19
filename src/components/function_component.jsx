@@ -63,6 +63,8 @@ var HeaderComponent = React.createClass({
  * @class FunctionComponent
  */
 module.exports = React.createClass({
+  displayName: 'FunctionComponent',
+
   render: function() {
     return (
       /* jshint ignore:start */
@@ -74,15 +76,15 @@ module.exports = React.createClass({
         />
         <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
         <ParamsComponent params={this.props.params} />
-        <ReturnsComponent returns={this.props.returns} />
+        <ReturnsComponent returns={this.props.returns[0]} />
         {this.renderExamples(this.props.examples || [])}
       </section>
       /* jshint ignore:end */
     );
   },
 
-  renderExamples: F.map(function(example) {
-    return ExampleComponent({example: example})
+  renderExamples: F.map(function(example, i) {
+    return ExampleComponent({example: example, key: 'example-' + i})
   }),
 
   // Returns true if this is a curried function.

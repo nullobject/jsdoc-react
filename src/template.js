@@ -13,6 +13,10 @@ var renderComponent = F.curry(function(component, child) {
 var kind     = function(a) { return F.compose(F.eql(a), F.get('kind')); },
     memberof = function(a) { return F.compose(F.eql(a), F.get('memberof')); };
 
+var moduleWithKey = function(m) {
+  return F.copy({key: 'module-' + m.name}, m);
+};
+
 function compareByName(a, b) {
   return F.compare(a.name, b.name);
 }
@@ -37,7 +41,7 @@ exports.render = function(db, opts) {
 
   var data     = db().get(),
       modules  = parseModules(data),
-      html     = renderComponent(PageComponent, modules.map(ModuleComponent)),
+      html     = renderComponent(PageComponent, modules.map(F.compose(ModuleComponent, moduleWithKey))),
       doctype  = '<!DOCTYPE html>';
 
   return doctype + html;

@@ -10,6 +10,8 @@ var React = require('react');
  * @class IconComponent
  */
 module.exports = React.createClass({
+  displayName: 'IconComponent',
+
   render: function() {
     var s = [this.props.className, 'glyphicon', 'glyphicon-' + this.props.name].join(' ');
     return (

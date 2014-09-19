@@ -7,6 +7,8 @@ var F                 = require('fkit'),
     React             = require('react');
 
 var HeaderComponent = React.createClass({
+  displayName: 'HeaderComponent',
+
   render: function() {
     return (
       /* jshint ignore:start */
@@ -21,7 +23,13 @@ var HeaderComponent = React.createClass({
   name: F.replace('/', '.'),
 });
 
+var functionWithKey = function(f) {
+  return F.copy({key: 'function-' + f.name}, f);
+};
+
 var FunctionsComponent = React.createClass({
+  displayName: 'FunctionsComponent',
+
   render: function() {
     return this.props.functions ? (
       /* jshint ignore:start */
@@ -32,7 +40,7 @@ var FunctionsComponent = React.createClass({
     ) : null;
   },
 
-  renderFunctions: F.map(FunctionComponent),
+  renderFunctions: F.map(F.compose(FunctionComponent, functionWithKey)),
 });
 
 /**
@@ -41,6 +49,8 @@ var FunctionsComponent = React.createClass({
  * @class ModuleComponent
  */
 module.exports = React.createClass({
+  displayName: 'ModuleComponent',
+
   render: function() {
     return (
       /* jshint ignore:start */

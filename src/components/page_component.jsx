@@ -12,6 +12,8 @@ require('../style.less');
  * @class ModuleComponent
  */
 module.exports = React.createClass({
+  displayName: 'PageComponent',
+
   render: function() {
     return (
       /* jshint ignore:start */

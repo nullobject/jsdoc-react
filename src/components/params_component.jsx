@@ -11,6 +11,8 @@ var F     = require('fkit'),
  * @class ParamsComponent
  */
 module.exports = React.createClass({
+  displayName: 'ParamsComponent',
+
   render: function() {
     return this.props.params ? (
       /* jshint ignore:start */
@@ -22,11 +24,11 @@ module.exports = React.createClass({
     ) : null;
   },
 
-  renderParams: F.concatMap(function(param) {
+  renderParams: F.concatMap(function(param, i) {
     return [
       /* jshint ignore:start */
-      <dt><code>{param.name}</code> {F.surround('{', '}', param.type.names.join('|'))}</dt>,
-      <dd dangerouslySetInnerHTML={{__html: param.description}} />
+      <dt key={'term-' + i}><code>{param.name}</code> {F.surround('{', '}', param.type.names.join('|'))}</dt>,
+      <dd key={'description-' + i} dangerouslySetInnerHTML={{__html: param.description}} />
       /* jshint ignore:end */
     ];
   }),
