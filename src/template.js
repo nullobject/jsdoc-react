@@ -1,9 +1,10 @@
 'use strict';
 
-var F               = require('fkit'),
-    ModuleComponent = require('./components/module_component.jsx'),
-    PageComponent   = require('./components/page_component.jsx'),
-    React           = require('react');
+var F     = require('fkit'),
+    React = require('react');
+
+var ModuleComponent = require('./components/module_component.jsx'),
+    PageComponent   = require('./components/page_component.jsx');
 
 var renderComponent = F.curry(function(component, child) {
   return React.renderComponentToStaticMarkup(component(null, child));
@@ -13,13 +14,7 @@ var kind     = function(a) { return F.compose(F.eql(a), F.get('kind')); },
     memberof = function(a) { return F.compose(F.eql(a), F.get('memberof')); };
 
 function compareByName(a, b) {
-  if (a.name > b.name) {
-    return 1;
-  } else if (a.name < b.name) {
-    return -1;
-  } else {
-    return 0;
-  }
+  return F.compare(a.name, b.name);
 }
 
 function parseModules(data) {
@@ -35,18 +30,15 @@ function parseModules(data) {
 }
 
 /**
- * The main module.
- *
- * @module main
+ * The render function.
  */
-module.exports = {
-  render: function(db, opts) {
-    db({undocumented: true}).remove();
+exports.render = function(db, opts) {
+  db({undocumented: true}).remove();
 
-    var data    = db().get(),
-        modules = parseModules(data),
-        html    = renderComponent(PageComponent, modules.map(ModuleComponent));
+  var data     = db().get(),
+      modules  = parseModules(data),
+      html     = renderComponent(PageComponent, modules.map(ModuleComponent)),
+      doctype  = '<!DOCTYPE html>';
 
-    return '<!DOCTYPE html>' + html;
-  }
+  return doctype + html;
 };

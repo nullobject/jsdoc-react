@@ -2,7 +2,7 @@ var path              = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = [{
-  entry: {main: path.join(__dirname, 'src', 'main.js')},
+  entry: {template: path.join(__dirname, 'src', 'template.js')},
   output: {
     path:          path.join(__dirname, 'build'),
     filename:      '[name].js',
