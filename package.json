@@ -4,16 +4,19 @@
   "description": "A JSDoc template built with React.",
   "homepage": "https://github.com/nullobject/jsdoc-react",
   "author": "Josh Bassett <josh.bassett@gmail.com> (http://joshbassett.info)",
-  "license": "MIT",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/nullobject/jsdoc-react/blob/master/LICENSE.md"
+  },
   "keywords": [
     "jsdoc",
     "react",
     "template"
   ],
-  "main": "./publish.js",
+  "main": "publish.js",
   "files": [
-    "./publish.js",
-    "./build"
+    "publish.js",
+    "build"
   ],
   "scripts": {
     "test": "mocha"
@@ -45,7 +48,7 @@
     "webpack": "^1.4.0-beta9"
   },
   "dependencies": {
-    "fkit": "^0.5.1",
+    "fkit": "^0.5.3",
     "react": "^0.11.2",
     "wrench": "^1.5.8"
   }
