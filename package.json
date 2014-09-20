@@ -13,7 +13,7 @@
   "main": "./publish.js",
   "files": [
     "./publish.js",
-    "./src"
+    "./build"
   ],
   "scripts": {
     "test": "mocha"
@@ -26,25 +26,27 @@
     "url": "https://github.com/nullobject/jsdoc-react/issues"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
-    "jsdoc": "^3.3.0-alpha9",
-    "jshint": "^2.5.5",
-    "mocha": "^1.21.4",
-    "sinon": "^1.10.3",
-    "sinon-chai": "^2.5.0",
-    "webpack": "^1.4.0-beta9"
-  },
-  "dependencies": {
     "bootstrap": "^3.2.0",
+    "chai": "^1.9.1",
     "css-loader": "^0.8.0",
     "extract-text-webpack-plugin": "^0.3.1",
     "file-loader": "^0.7.2",
-    "fkit": "^0.5.1",
-    "jsx-loader": "^0.11.0",
     "less": "^1.7.5",
     "less-loader": "^0.7.7",
-    "react": "^0.11.2",
+    "highlight.js": "^8.2.0",
+    "jsdoc": "^3.3.0-alpha9",
+    "jshint": "^2.5.5",
+    "jsx-loader": "^0.11.0",
+    "mocha": "^1.21.4",
+    "sinon": "^1.10.3",
+    "sinon-chai": "^2.5.0",
     "style-loader": "^0.8.0",
-    "url-loader": "^0.5.5"
+    "url-loader": "^0.5.5",
+    "webpack": "^1.4.0-beta9"
+  },
+  "dependencies": {
+    "fkit": "^0.5.1",
+    "react": "^0.11.2",
+    "wrench": "^1.5.8"
   }
 }
