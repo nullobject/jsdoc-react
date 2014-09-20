@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A JSDoc template built with React.",
   "homepage": "https://github.com/nullobject/jsdoc-react",
   "author": "Josh Bassett <josh.bassett@gmail.com> (http://joshbassett.info)",
