@@ -20,7 +20,7 @@ var HeaderComponent = React.createClass({
     );
   },
 
-  name: F.replace('/', '.'),
+  name: F.replace(/\//g, '.'),
 });
 
 var functionWithKey = function(f) {
