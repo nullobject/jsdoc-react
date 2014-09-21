@@ -2,11 +2,10 @@ var path              = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = [{
-  entry: {template: path.join(__dirname, 'src', 'template.js')},
+  entry: {app: path.join(__dirname, 'src', 'app.js')},
   output: {
-    path:          path.join(__dirname, 'build'),
-    filename:      '[name].js',
-    libraryTarget: 'commonjs2'
+    path:     path.join(__dirname, 'build'),
+    filename: '[name].js',
   },
   module: {
     loaders: [
@@ -18,16 +17,7 @@ module.exports = [{
       {test: /\.svg$/,  loader: 'file-loader'}
     ]
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
   plugins: [
     new ExtractTextPlugin('style.css', {allChunks: true})
   ]
-}, {
-  entry: {app: path.join(__dirname, 'src', 'app.js')},
-  output: {
-    path:     path.join(__dirname, 'build'),
-    filename: '[name].js'
-  }
 }];
