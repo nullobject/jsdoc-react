@@ -21,10 +21,6 @@ var mixedInto = F.curry(function(a, b) {
   return a.mixes ? F.elem(b.longname, a.mixes) : false;
 });
 
-var moduleWithKey = function(m) {
-  return F.copy({key: 'module-' + m.name}, m);
-};
-
 function compareByName(a, b) { return F.compare(a.name, b.name); }
 
 // Returns functions which are members of a module.
@@ -50,7 +46,10 @@ function buildModules(data) {
       .sort(compareByName);
 
     // Merge the functions into the module object.
-    return F.copy({functions: functions}, module);
+    return F.copy({
+      functions: functions,
+      key:       'module-' + module.name
+    }, module);
   });
 }
 
@@ -62,7 +61,7 @@ exports.render = function(db, opts) {
 
   var data     = db().get(),
       modules  = buildModules(data),
-      html     = renderComponent(PageComponent, modules.map(F.compose(ModuleComponent, moduleWithKey))),
+      html     = renderComponent(PageComponent, modules.map(ModuleComponent)),
       doctype  = '<!DOCTYPE html>';
 
   return doctype + html;
