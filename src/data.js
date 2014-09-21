@@ -22,13 +22,19 @@ var isPublic = function(a) {
   return a.access ? a.access !== 'private' : true;
 };
 
-// Runs the predicate `p` on the database `db`.
+// Runs the predicate `p` on the database object `db`.
 function run(db, p) {
   return db(function() {
     return p(this);
   });
 }
 
+/**
+ * This module defines data operations.
+ *
+ * @module data
+ * @author Josh Bassett
+ */
 module.exports = {
   // Finds all modules.
   findModules: function(db) {
@@ -36,7 +42,7 @@ module.exports = {
   },
 
   // Finds the modules which are mixed into a module.
- findModuleMixins: function(db, module) {
+  findModuleMixins: function(db, module) {
     var p = mixedInto(module);
     return run(db, p);
   },

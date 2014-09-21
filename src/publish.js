@@ -1,6 +1,6 @@
 'use strict';
 
-require('node-jsx').install({extension: '.jsx'})
+require('node-jsx').install({extension: '.jsx'});
 
 var data   = require('./data'),
     fs     = require('fs'),
@@ -11,10 +11,6 @@ var data   = require('./data'),
 
 var ModuleComponent = require('./components/module_component'),
     PageComponent   = require('./components/page_component');
-
-var renderComponent = F.curry(function(component, child) {
-  return React.renderComponentToStaticMarkup(component(null, child));
-});
 
 function copyFunction(a) {
   return F.copy({
@@ -29,7 +25,7 @@ function copyModule(a, bs) {
   }, a);
 }
 
-// Builds the modules from the database `db`.
+// Builds the modules from the database object `db`.
 function buildModules(db) {
   var modules = data.findModules(db).order('name');
 
@@ -46,8 +42,15 @@ function buildModules(db) {
   });
 }
 
+// Renders the component `a` with the child component `b`.
+var renderComponent = F.curry(function(a, b) {
+  return React.renderComponentToStaticMarkup(a(null, b));
+});
+
 /**
- * The render function.
+ * The publish function.
+ *
+ * @author Josh Bassett
  */
 exports.publish = function(db, opts) {
   db({undocumented: true}).remove();
