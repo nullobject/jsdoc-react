@@ -16,20 +16,33 @@ var renderComponent = F.curry(function(component, child) {
   return React.renderComponentToStaticMarkup(component(null, child));
 });
 
-// Builds the module objects.
+function copyFunction(a) {
+  return F.copy({
+    key: 'function-' + a.name
+  }, a);
+}
+
+function copyModule(a, bs) {
+  return F.copy({
+    key: 'module-' + a.name,
+    functions: bs
+  }, a);
+}
+
+// Builds the modules from the database `db`.
 function buildModules(db) {
   var modules = data.findModules(db).order('name');
 
   return modules.map(function(module) {
-    var mixins        = data.findModuleMixins(db, module).get(),
-        searchModules = F.append(module, mixins),
-        functions     = data.findModuleFunctions(db, searchModules).order('name');
+    var mixins = data.findModuleMixins(db, module).get(),
+        searchModules = F.append(module, mixins);
 
-    // Merge the functions into the module object.
-    return F.copy({
-      functions: functions,
-      key:       'module-' + module.name
-    }, module);
+    var functions = data
+      .findModuleFunctions(db, searchModules)
+      .order('name')
+      .map(copyFunction);
+
+    return copyModule(module, functions);
   });
 }
 
