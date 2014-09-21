@@ -4,8 +4,6 @@
 
 var React = require('react');
 
-require('../style.less');
-
 /**
  * Represents a HTML page.
  *

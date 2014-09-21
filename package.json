@@ -15,8 +15,9 @@
   ],
   "main": "publish.js",
   "files": [
-    "publish.js",
-    "build"
+    "build",
+    "src",
+    "publish.js"
   ],
   "scripts": {
     "test": "mocha"
@@ -39,7 +40,6 @@
     "highlight.js": "^8.2.0",
     "jsdoc": "^3.3.0-alpha9",
     "jshint": "^2.5.5",
-    "jsx-loader": "^0.11.0",
     "mocha": "^1.21.4",
     "sinon": "^1.10.3",
     "sinon-chai": "^2.5.0",
@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "fkit": "^0.5.3",
+    "node-jsx": "^0.11.0",
     "react": "^0.11.2",
     "wrench": "^1.5.8"
   }
