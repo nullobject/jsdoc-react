@@ -24,10 +24,6 @@ var HeaderComponent = React.createClass({
   name: F.replace(/\//g, '.'),
 });
 
-var functionWithKey = function(f) {
-  return F.copy({key: 'function-' + f.name}, f);
-};
-
 var FunctionsComponent = React.createClass({
   displayName: 'FunctionsComponent',
 
@@ -41,7 +37,7 @@ var FunctionsComponent = React.createClass({
     ) : null;
   },
 
-  renderFunctions: F.map(F.compose(FunctionComponent, functionWithKey)),
+  renderFunctions: F.map(FunctionComponent),
 });
 
 /**
