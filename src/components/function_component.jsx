@@ -76,11 +76,15 @@ module.exports = React.createClass({
         />
         <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
         <ParamsComponent params={this.props.params} />
-        <ReturnsComponent returns={this.props.returns[0]} />
+        {this.renderReturns(this.props.returns)}
         {this.renderExamples(this.props.examples || [])}
       </section>
       /* jshint ignore:end */
     );
+  },
+
+  renderReturns: function(returns) {
+    return returns ? ReturnsComponent({returns: returns[0]}) : null;
   },
 
   renderExamples: F.map(function(example, i) {

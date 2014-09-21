@@ -2,15 +2,23 @@
 
 'use strict';
 
-var React = require('react');
+var F     = require('fkit'),
+    React = require('react');
+
+var ModuleComponent = require('./module_component');
 
 /**
  * Represents a HTML page.
  *
- * @class ModuleComponent
+ * @class PageComponent
  */
 module.exports = React.createClass({
   displayName: 'PageComponent',
+
+  propTypes: {
+    classes: React.PropTypes.array.isRequired,
+    modules: React.PropTypes.array.isRequired,
+  },
 
   render: function() {
     return (
@@ -24,10 +32,16 @@ module.exports = React.createClass({
           <script src="app.js" />
         </head>
         <body>
-          <div className="container">{this.props.children}</div>
+          <div className="container">
+            {this.renderClasses(this.props.classes)}
+            {this.renderModules(this.props.modules)}
+          </div>
         </body>
       </html>
       /* jshint ignore:end */
     );
   },
+
+  renderClasses: F.map(ModuleComponent),
+  renderModules: F.map(ModuleComponent),
 });
