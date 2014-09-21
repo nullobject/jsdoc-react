@@ -28,26 +28,32 @@ var mixedInto = F.curry(function(a, b) {
 
 function compareByName(a, b) { return F.compare(a.name, b.name); }
 
-// Returns functions which are members of a module.
-var moduleFunctions = F.curry(function(data, module) {
-  var p = F.whereAll([kind('function'), memberOf(module.longname)]);
-  return data.filter(p);
-});
+function run(query, p) {
+  return query(function() {
+    return p(this);
+  });
+}
 
 // Returns the modules which are mixed into a module.
-var moduleMixins = F.curry(function(data, module) {
+var moduleMixins = F.curry(function(db, module) {
   var p = mixedInto(module);
-  return data.filter(p);
+  return run(db, p);
 });
 
-function buildModules(data) {
-  var modules = F.filter(F.whereAll([isPublic, kind('module')]), data).sort(compareByName);
+// Returns functions which are members of a module.
+var moduleFunctions = F.curry(function(db, module) {
+  var p = F.whereAll([kind('function'), memberOf(module.longname)]);
+  return run(db, p).get();
+});
+
+function buildModules(db) {
+  var modules = run(db, F.whereAll([isPublic, kind('module')])).order('name');
 
   return modules.map(function(module) {
-    var mixins = moduleMixins(data, module);
+    var mixins = moduleMixins(db, module).get();
 
     var functions = F
-      .concatMap(moduleFunctions(data), F.concat(module, mixins))
+      .concatMap(moduleFunctions(db), F.concat(module, mixins))
       .sort(compareByName);
 
     // Merge the functions into the module object.
@@ -67,8 +73,7 @@ exports.publish = function(db, opts) {
   var srcDir   = path.join(__dirname, '..', 'build'),
       destDir  = path.resolve(opts.destination),
       filename = path.join(destDir, 'index.html'),
-      data     = db().get(),
-      modules  = buildModules(data),
+      modules  = buildModules(db),
       doctype  = '<!DOCTYPE html>',
       html     = renderComponent(PageComponent, modules.map(ModuleComponent));
 
