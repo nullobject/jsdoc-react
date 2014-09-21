@@ -2,9 +2,10 @@
 
 'use strict';
 
-var F                 = require('fkit'),
-    FunctionComponent = require('./function_component.jsx'),
-    React             = require('react');
+var F     = require('fkit'),
+    React = require('react');
+
+var FunctionComponent = require('./function_component');
 
 var HeaderComponent = React.createClass({
   displayName: 'HeaderComponent',

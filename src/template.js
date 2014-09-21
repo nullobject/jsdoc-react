@@ -3,8 +3,8 @@
 var F     = require('fkit'),
     React = require('react');
 
-var ModuleComponent = require('./components/module_component.jsx'),
-    PageComponent   = require('./components/page_component.jsx');
+var ModuleComponent = require('./components/module_component'),
+    PageComponent   = require('./components/page_component');
 
 var renderComponent = F.curry(function(component, child) {
   return React.renderComponentToStaticMarkup(component(null, child));

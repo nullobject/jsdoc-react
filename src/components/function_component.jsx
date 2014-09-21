@@ -5,11 +5,11 @@
 var F     = require('fkit'),
     React = require('react');
 
-var ExampleComponent = require('./example_component.jsx'),
-    IconComponent    = require('./icon_component.jsx'),
-    LabelComponent   = require('./label_component.jsx'),
-    ParamsComponent  = require('./params_component.jsx'),
-    ReturnsComponent = require('./returns_component.jsx');
+var ExampleComponent = require('./example_component'),
+    IconComponent    = require('./icon_component'),
+    LabelComponent   = require('./label_component'),
+    ParamsComponent  = require('./params_component'),
+    ReturnsComponent = require('./returns_component');
 
 var HeaderComponent = React.createClass({
   render: function() {

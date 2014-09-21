@@ -18,6 +18,9 @@ module.exports = [{
       {test: /\.svg$/,  loader: 'file-loader'}
     ]
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   plugins: [
     new ExtractTextPlugin('style.css', {allChunks: true})
   ]
