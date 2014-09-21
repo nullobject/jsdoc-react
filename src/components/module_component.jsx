@@ -13,7 +13,7 @@ var HeaderComponent = React.createClass({
     return (
       /* jshint ignore:start */
       <header>
-        <h1 className="page-header">{this.name(this.props.name)}</h1>
+        <h1 className="page-header">{this.name(this.props.name)} &mdash; {this.props.summary}</h1>
         <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
       </header>
       /* jshint ignore:end */
@@ -55,7 +55,7 @@ module.exports = React.createClass({
     return (
       /* jshint ignore:start */
       <section className="module">
-        <HeaderComponent name={this.props.name} description={this.props.description} />
+        <HeaderComponent name={this.props.name} summary={this.props.summary} description={this.props.description} />
         <FunctionsComponent functions={this.props.functions} />
       </section>
       /* jshint ignore:end */
