@@ -33,6 +33,7 @@ module.exports = React.createClass({
         </head>
         <body>
           <div className="container">
+            <section className="readme" dangerouslySetInnerHTML={{__html: this.props.readme}} />
             {this.renderClasses(this.props.classes)}
             {this.renderModules(this.props.modules)}
           </div>
