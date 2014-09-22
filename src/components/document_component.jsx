@@ -5,7 +5,8 @@
 var F     = require('fkit'),
     React = require('react');
 
-var ModuleComponent = require('./module_component');
+var ClassComponent  = require('./module_component'),
+    ModuleComponent = require('./module_component');
 
 /**
  * Represents a HTML page.
@@ -28,14 +29,20 @@ module.exports = React.createClass({
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>JSDoc React</title>
-          <link rel="stylesheet" href="style.css" />
+          <link href="style.css" rel="stylesheet" />
           <script src="app.js" />
         </head>
         <body>
           <div className="container">
             <section className="readme" dangerouslySetInnerHTML={{__html: this.props.readme}} />
-            {this.renderClasses(this.props.classes)}
-            {this.renderModules(this.props.modules)}
+            <section className="modules">
+              <h1 className="page-header">Modules</h1>
+              {this.renderModules(this.props.modules)}
+            </section>
+            <section className="classes">
+              <h1 className="page-header">Classes</h1>
+              {this.renderClasses(this.props.classes)}
+            </section>
           </div>
         </body>
       </html>
@@ -43,6 +50,6 @@ module.exports = React.createClass({
     );
   },
 
-  renderClasses: F.map(ModuleComponent),
+  renderClasses: F.map(ClassComponent),
   renderModules: F.map(ModuleComponent),
 });

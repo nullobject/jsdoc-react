@@ -69,11 +69,7 @@ module.exports = React.createClass({
     return (
       /* jshint ignore:start */
       <section className="function">
-        <HeaderComponent
-          name={this.props.name}
-          params={this.props.params}
-          curried={this.curried()}
-        />
+        <HeaderComponent name={this.props.name} params={this.props.params} curried={this.curried()} />
         <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
         <ParamsComponent params={this.props.params} />
         {this.renderReturns(this.props.returns)}

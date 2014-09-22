@@ -9,17 +9,17 @@ var FunctionsComponent = require('./functions_component'),
     HeaderComponent    = require('./header_component');
 
 /**
- * Represents a module definition.
+ * Represents a class definition.
  *
- * @class ModuleComponent
+ * @class ClassComponent
  */
 module.exports = React.createClass({
-  displayName: 'ModuleComponent',
+  displayName: 'ClassComponent',
 
   render: function() {
     return (
       /* jshint ignore:start */
-      <section className="module">
+      <section className="class">
         <HeaderComponent name={this.props.name} summary={this.props.summary} description={this.props.description} />
         <FunctionsComponent functions={this.props.functions} />
       </section>
