@@ -9,7 +9,10 @@ var data   = require('./data'),
     F      = require('fkit'),
     React  = require('react');
 
-var DocumentComponent = require('./components/document_component');
+var APIComponent  = require('./components/api_component'),
+    PageComponent = require('./components/page_component');
+
+var DOCTYPE = '<!DOCTYPE html>';
 
 function copyFunction(a) {
   return F.copy({
@@ -66,6 +69,20 @@ function buildClasses(db) {
   });
 }
 
+// Renders the component `a` with the child component `b`.
+function render(a, b) {
+  return React.renderComponentToStaticMarkup(a(null, b));
+}
+
+function renderReadme(readme) {
+  return DOCTYPE + render(PageComponent, React.DOM.div({dangerouslySetInnerHTML: {__html: readme}}));
+}
+
+function renderAPI(classes, modules) {
+  var api = APIComponent({classes: classes, modules: modules});
+  return DOCTYPE + render(PageComponent, api);
+}
+
 /**
  * The publish function.
  *
@@ -74,17 +91,14 @@ function buildClasses(db) {
 exports.publish = function(db, options) {
   db({undocumented: true}).remove();
 
-  var srcDir   = path.join(__dirname, '..', 'build'),
-      destDir  = path.resolve(options.destination),
-      filename = path.join(destDir, 'index.html'),
-      doctype  = '<!DOCTYPE html>',
-      doc      = DocumentComponent({classes: buildClasses(db), modules: buildModules(db), readme: options.readme}),
-      html     = React.renderComponentToStaticMarkup(doc);
+  var srcDir  = path.join(__dirname, '..', 'build'),
+      destDir = path.resolve(options.destination);
 
   wrench.copyDirSyncRecursive(srcDir, destDir, {
     forceDelete:        true,
     preserveTimestamps: true
   });
 
-  fs.writeFileSync(filename, doctype + html);
+  fs.writeFileSync(path.join(destDir, 'index.html'), renderReadme(options.readme));
+  fs.writeFileSync(path.join(destDir, 'api.html'), renderAPI(buildClasses(db), buildModules(db)));
 };
