@@ -36,20 +36,25 @@ function run(db, p) {
  * @author Josh Bassett
  */
 module.exports = {
+  // Finds all classes.
+  findClasses: function(db) {
+    return run(db, F.whereAll([isPublic, kind('class')]));
+  },
+
   // Finds all modules.
   findModules: function(db) {
     return run(db, F.whereAll([isPublic, kind('module')]));
   },
 
   // Finds the modules which are mixed into a module.
-  findModuleMixins: function(db, module) {
-    var p = mixedInto(module);
+  findModuleMixins: function(db, a) {
+    var p = mixedInto(a);
     return run(db, p);
   },
 
-  // Finds the functions which belong to any module in the list of modules.
-  findModuleFunctions: function(db, modules) {
-    var p = F.whereAll([kind('function'), memberOf(modules)]);
+  // Finds the functions which belong to any doclet in the list of `as`.
+  findChildFunctions: function(db, as) {
+    var p = F.whereAll([isPublic, kind('function'), memberOf(as)]);
     return run(db, p);
   },
 };

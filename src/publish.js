@@ -9,8 +9,7 @@ var data   = require('./data'),
     F      = require('fkit'),
     React  = require('react');
 
-var ModuleComponent = require('./components/module_component'),
-    PageComponent   = require('./components/page_component');
+var DocumentComponent = require('./components/document_component');
 
 function copyFunction(a) {
   return F.copy({
@@ -25,7 +24,16 @@ function copyModule(a, bs) {
   }, a);
 }
 
-// Builds the modules from the database object `db`.
+function copyClass(a, bs) {
+  return F.copy({
+    key: 'class-' + a.name,
+    functions: bs
+  }, a);
+}
+
+/**
+ * Builds the modules from the database object `db`.
+ */
 function buildModules(db) {
   var modules = data.findModules(db).order('name');
 
@@ -34,7 +42,7 @@ function buildModules(db) {
         searchModules = F.append(module, mixins);
 
     var functions = data
-      .findModuleFunctions(db, searchModules)
+      .findChildFunctions(db, searchModules)
       .order('name')
       .map(copyFunction);
 
@@ -42,25 +50,36 @@ function buildModules(db) {
   });
 }
 
-// Renders the component `a` with the child component `b`.
-var renderComponent = F.curry(function(a, b) {
-  return React.renderComponentToStaticMarkup(a(null, b));
-});
+/**
+ * Builds the classes from the database object `db`.
+ */
+function buildClasses(db) {
+  var classes = data.findClasses(db).order('name');
+
+  return classes.map(function(klass) {
+    var functions = data
+      .findChildFunctions(db, [klass])
+      .order('name')
+      .map(copyFunction);
+
+    return copyClass(klass, functions);
+  });
+}
 
 /**
  * The publish function.
  *
  * @author Josh Bassett
  */
-exports.publish = function(db, opts) {
+exports.publish = function(db, options) {
   db({undocumented: true}).remove();
 
   var srcDir   = path.join(__dirname, '..', 'build'),
-      destDir  = path.resolve(opts.destination),
+      destDir  = path.resolve(options.destination),
       filename = path.join(destDir, 'index.html'),
-      modules  = buildModules(db),
       doctype  = '<!DOCTYPE html>',
-      html     = renderComponent(PageComponent, modules.map(ModuleComponent));
+      doc      = DocumentComponent({classes: buildClasses(db), modules: buildModules(db), readme: options.readme}),
+      html     = React.renderComponentToStaticMarkup(doc);
 
   wrench.copyDirSyncRecursive(srcDir, destDir, {
     forceDelete:        true,
