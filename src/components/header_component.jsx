@@ -17,7 +17,7 @@ module.exports = React.createClass({
     return (
       /* jshint ignore:start */
       <header>
-        <h2 className="page-header">{this.name(this.props.name)} &mdash; {this.props.summary}</h2>
+        <h2 className="page-header" id={this.props.name}>{this.name(this.props.name)} &mdash; {this.props.summary}</h2>
         <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
       </header>
       /* jshint ignore:end */

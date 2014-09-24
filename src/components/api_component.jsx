@@ -25,18 +25,35 @@ module.exports = React.createClass({
     return (
       /* jshint ignore:start */
       <section className="api">
+        <section className="index">
+          <h1 className="page-header">API</h1>
+          <ul>{this.renderIndex()}</ul>
+        </section>
         <section className="modules">
-          <h1 className="page-header">Modules</h1>
+          <h2 className="page-header">Modules</h2>
           {this.renderModules(this.props.modules)}
         </section>
         <section className="classes">
-          <h1 className="page-header">Classes</h1>
+          <h2 className="page-header">Classes</h2>
           {this.renderClasses(this.props.classes)}
         </section>
       </section>
       /* jshint ignore:end */
     );
   },
+
+  renderIndex: function() {
+    return F.map(this.renderAnchor, F.concat(this.props.modules, this.props.classes));
+  },
+
+  renderAnchor: function(item) {
+    return (
+      /* jshint ignore:start */
+      <li key={item.key}><a href={'#' + item.name}>{item.name} &mdash; {item.summary}</a></li>
+      /* jshint ignore:end */
+    );
+  },
+
 
   renderClasses: F.map(ClassComponent),
   renderModules: F.map(ModuleComponent),
