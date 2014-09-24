@@ -12,6 +12,8 @@ var ExampleComponent = require('./example_component'),
     ReturnsComponent = require('./returns_component');
 
 var HeaderComponent = React.createClass({
+  labels: ['curried', 'deprecated'],
+
   render: function() {
     return (
       /* jshint ignore:start */
@@ -19,8 +21,7 @@ var HeaderComponent = React.createClass({
         <h3 id={this.props.name}>
           {this.renderAnchor(this.props.name)}
           {this.renderDefinition(this.props.name, this.props.params)}
-          &nbsp;
-          {this.renderCurriedLabel(this.props.curried)}
+          {this.renderLabels()}
         </h3>
       </header>
       /* jshint ignore:end */
@@ -35,19 +36,22 @@ var HeaderComponent = React.createClass({
     );
   },
 
-  renderCurriedLabel: function(curried) {
-    return curried ? (
-      /* jshint ignore:start */
-      <LabelComponent text="curried" type="primary" />
-      /* jshint ignore:end */
-    ) : null;
+  renderLabels: function() {
+    var self = this;
+
+    var as = this.labels.reduce(function(a, b) {
+      return (self.props[b] === true) ? F.append(self.renderLabel(b), a) : a;
+    }, []);
+
+    return F.concatMap(F.prepend(' '), as);
+  },
+
+  renderLabel: function(a) {
+    return LabelComponent({key: a, text: a, type: a});
   },
 
   renderDefinition: function(name, params) {
-    return F.concat(
-      name,
-      this.renderParams(params)
-    );
+    return F.concat(name, this.renderParams(params));
   },
 
   renderParams: F.compose(
@@ -69,7 +73,11 @@ module.exports = React.createClass({
     return (
       /* jshint ignore:start */
       <section className="function">
-        <HeaderComponent name={this.props.name} params={this.props.params} curried={this.curried()} />
+        <HeaderComponent
+          name={this.props.name}
+          params={this.props.params}
+          curried={this.curried()}
+          deprecated={this.deprecated()} />
         <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
         <ParamsComponent params={this.props.params} />
         {this.renderReturns(this.props.returns)}
@@ -91,5 +99,10 @@ module.exports = React.createClass({
   curried: function() {
     var title = function(a) { return F.compose(F.eq(a), F.get('title')); };
     return F.any(title('curried'), this.props.tags || []);
+  },
+
+  // Returns true if this is a deprecated function.
+  deprecated: function() {
+    return this.props.deprecated === true;
   },
 });
