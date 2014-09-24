@@ -89,7 +89,7 @@ module.exports = React.createClass({
 
   // Returns true if this is a curried function.
   curried: function() {
-    var title = function(a) { return F.compose(F.eql(a), F.get('title')); };
+    var title = function(a) { return F.compose(F.eq(a), F.get('title')); };
     return F.any(title('curried'), this.props.tags || []);
   },
 });
