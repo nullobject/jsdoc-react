@@ -20,7 +20,7 @@ module.exports = React.createClass({
       <section className="returns">
         <h4>Returns</h4>
         <dl className="dl-horizontal">
-          <dt>{F.surround('{', '}', returns.type.names.join('|'))}</dt>,
+          <dt>{F.surround('{', '}', returns.type.names.join('|'))}</dt>
           <dd dangerouslySetInnerHTML={{__html: returns.description}} />
         </dl>
       </section>
