@@ -1,12 +1,12 @@
 @import "~bootstrap/less/bootstrap.less";
 @import "~highlight.js/styles/github.css";
 
-.hljs {
-  background-color: transparent;
-}
+.hljs { background-color: transparent; }
 
+// Tags
 .curried { background-color: @brand-primary; }
 .deprecated { background-color: @brand-danger; }
+.new { background-color: @brand-success; }
 
 .function {
   padding: 9px 0px;
@@ -22,9 +22,7 @@
       width: 40px;
     }
 
-    &:hover .anchor {
-      color: @link-hover-color;
-    }
+    &:hover .anchor { color: @link-hover-color; }
 
     .label { font-size: @font-size-small; }
   }

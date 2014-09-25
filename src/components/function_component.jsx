@@ -12,7 +12,7 @@ var ExampleComponent = require('./example_component'),
     ReturnsComponent = require('./returns_component');
 
 var HeaderComponent = React.createClass({
-  labels: ['curried', 'deprecated'],
+  labels: ['curried', 'deprecated', 'new'],
 
   render: function() {
     return (
@@ -76,8 +76,9 @@ module.exports = React.createClass({
         <HeaderComponent
           name={this.props.name}
           params={this.props.params}
-          curried={this.curried()}
-          deprecated={this.deprecated()} />
+          deprecated={this.deprecated()}
+          curried={this.hasTag('curried')}
+          new={this.hasTag('new')} />
         <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
         <ParamsComponent params={this.props.params} />
         {this.renderReturns(this.props.returns)}
@@ -95,14 +96,14 @@ module.exports = React.createClass({
     return ExampleComponent({example: example, key: 'example-' + i})
   }),
 
-  // Returns true if this is a curried function.
-  curried: function() {
-    var title = function(a) { return F.compose(F.eq(a), F.get('title')); };
-    return F.any(title('curried'), this.props.tags || []);
-  },
-
   // Returns true if this is a deprecated function.
   deprecated: function() {
     return this.props.deprecated === true;
+  },
+
+  // Returns true if the function has the tag `t`.
+  hasTag: function(t) {
+    var title = function(a) { return F.compose(F.eq(a), F.get('title')); };
+    return F.any(title(t), this.props.tags || []);
   },
 });
