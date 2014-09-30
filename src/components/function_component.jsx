@@ -17,21 +17,12 @@ var HeaderComponent = React.createClass({
   render: function() {
     return (
       /* jshint ignore:start */
-      <header>
-        <h3 id={this.props.name}>
-          {this.renderAnchor(this.props.name)}
-          {this.renderDefinition(this.props.name, this.props.params)}
+      <header id={this.props.name}>
+        <h3>
+          <a href={'#' + this.props.name}><code>{this.renderDefinition(this.props.name, this.props.params)}</code></a>
           {this.renderLabels()}
         </h3>
       </header>
-      /* jshint ignore:end */
-    );
-  },
-
-  renderAnchor: function(name) {
-    return (
-      /* jshint ignore:start */
-      <a href={'#' + name}><IconComponent className="anchor" name="link" /></a>
       /* jshint ignore:end */
     );
   },
@@ -79,7 +70,8 @@ module.exports = React.createClass({
           deprecated={this.deprecated()}
           curried={this.hasTag('curried')}
           new={this.hasTag('new')} />
-        <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
+        <p className="summary">{this.props.summary}</p>
+        {this.renderDescription(this.props.description)}
         <ParamsComponent params={this.props.params} />
         {this.renderReturns(this.props.returns)}
         {this.renderExamples(this.props.examples || [])}
@@ -88,6 +80,16 @@ module.exports = React.createClass({
     );
   },
 
+  renderDescription: function(description) {
+    return description ? (
+      /* jshint ignore:start */
+      <section className="description">
+        <h4>Discussion</h4>
+        <div dangerouslySetInnerHTML={{__html: description}} />
+      </section>
+      /* jshint ignore:end */
+    ) : null;
+  },
   renderReturns: function(returns) {
     return returns ? ReturnsComponent({returns: returns[0]}) : null;
   },

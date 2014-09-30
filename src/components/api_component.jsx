@@ -5,7 +5,7 @@
 var F     = require('fkit'),
     React = require('react');
 
-var ClassComponent  = require('./module_component'),
+var ClassComponent  = require('./class_component'),
     ModuleComponent = require('./module_component');
 
 /**
@@ -26,17 +26,11 @@ module.exports = React.createClass({
       /* jshint ignore:start */
       <section className="api">
         <section className="index">
-          <h1 className="page-header">API</h1>
+          <h1>API</h1>
           <ul>{this.renderIndex()}</ul>
         </section>
-        <section className="modules">
-          <h2 className="page-header">Modules</h2>
-          {this.renderModules(this.props.modules)}
-        </section>
-        <section className="classes">
-          <h2 className="page-header">Classes</h2>
-          {this.renderClasses(this.props.classes)}
-        </section>
+        {this.renderModules(this.props.modules)}
+        {this.renderClasses(this.props.classes)}
       </section>
       /* jshint ignore:end */
     );

@@ -18,18 +18,22 @@ module.exports = React.createClass({
       /* jshint ignore:start */
       <section className="params">
         <h4>Parameters</h4>
-        <dl className="dl-horizontal">{this.renderParams(this.props.params)}</dl>
+        <table className="table table-bordered table-condensed">
+          <tbody>{this.renderParams(this.props.params)}</tbody>
+        </table>
       </section>
       /* jshint ignore:end */
     ) : null;
   },
 
-  renderParams: F.concatMap(function(param, i) {
-    return [
+  renderParams: F.map(function(param, i) {
+    return (
       /* jshint ignore:start */
-      <dt key={'term-' + i}><code>{param.name}</code> {F.surround('{', '}', param.type.names.join('|'))}</dt>,
-      <dd key={'description-' + i} dangerouslySetInnerHTML={{__html: param.description}} />
+      <tr key={'term-' + i}>
+        <td className="name"><code>{param.name}</code></td>
+        <td className="description" dangerouslySetInnerHTML={{__html: param.description}}></td>
+      </tr>
       /* jshint ignore:end */
-    ];
+    );
   }),
 });

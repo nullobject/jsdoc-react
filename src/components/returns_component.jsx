@@ -18,11 +18,8 @@ module.exports = React.createClass({
     return this.props.returns ? (
       /* jshint ignore:start */
       <section className="returns">
-        <h4>Returns</h4>
-        <dl className="dl-horizontal">
-          <dt>{F.surround('{', '}', returns.type.names.join('|'))}</dt>
-          <dd dangerouslySetInnerHTML={{__html: returns.description}} />
-        </dl>
+        <h4>Return Value</h4>
+        <div dangerouslySetInnerHTML={{__html: returns.description}} />
       </section>
       /* jshint ignore:end */
     ) : null;

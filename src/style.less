@@ -1,29 +1,48 @@
 @import "~bootstrap/less/bootstrap.less";
 @import "~highlight.js/styles/github.css";
 
-.hljs { background-color: transparent; }
+@font-family-sans-serif: Helvetica, Arial, sans-serif;
 
-// Tags
-.curried { background-color: @brand-primary; }
-.deprecated { background-color: @brand-danger; }
-.new { background-color: @brand-success; }
-
-.function {
-  padding: 9px 0px;
-  margin-bottom: 14px;
-
-  header {
-    position: relative;
-
-    .anchor {
-      position: absolute;
-      left: -40px;
-      color: transparent;
-      width: 40px;
-    }
-
-    &:hover .anchor { color: @link-hover-color; }
-
-    .label { font-size: @font-size-small; }
-  }
+// Tweak the headings.
+h1 { font-weight: 100; }
+h2 {
+  font-weight: 100;
+  color: @gray;
 }
+h3 { font-weight: 100 }
+h4 {
+  font-weight: 700;
+  margin-top: @line-height-computed;
+  margin-bottom: @line-height-computed / 2;
+}
+
+// Make code elements linkable.
+a {
+  code {
+    background-color: transparent;
+    color: @link-color;
+    padding: 0;
+  }
+  &:hover code { color: @link-hover-color; }
+}
+
+// Give modules, functions, and classes some room.
+.module, .function, .class {
+  margin-top: @line-height-computed * 2;
+  margin-bottom: @line-height-computed;
+  h3 { font-size: @font-size-base; }
+  h4 { font-size: ceil(@font-size-base * 0.85) };
+}
+
+.function .params {
+  .name { text-align: right; width: 25%; }
+  .description p { margin: 0; }
+}
+
+// Disable background colour on highlight.js code elements.
+code.hljs { background-color: transparent; }
+
+// Function labels.
+.curried    { background-color: @brand-primary; }
+.deprecated { background-color: @brand-danger; }
+.new        { background-color: @brand-success; }

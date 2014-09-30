@@ -14,24 +14,25 @@ var APIComponent  = require('./components/api_component'),
 
 var DOCTYPE = '<!DOCTYPE html>';
 
-function copyFunction(a) {
+function copyFunction(fn) {
   return F.copy({
-    key: 'function-' + a.name
-  }, a);
+    key: 'function-' + fn.name
+  }, fn);
 }
 
-function copyModule(a, bs) {
-  return F.copy({
-    key: 'module-' + a.name,
-    functions: bs
-  }, a);
+function copyModule(module, fns) {
+  return F.copy({}, module, {
+    key:       'module-' + module.name,
+    name:      F.replace(/\//g, '.', module.name),
+    functions: fns
+  });
 }
 
-function copyClass(a, bs) {
-  return F.copy({
-    key: 'class-' + a.name,
-    functions: bs
-  }, a);
+function copyClass(klass, fns) {
+  return F.copy({}, klass, {
+    key:       'class-' + klass.name,
+    functions: fns
+  });
 }
 
 /**
@@ -44,12 +45,12 @@ function buildModules(db) {
     var mixins = data.findModuleMixins(db, module).get(),
         searchModules = F.append(module, mixins);
 
-    var functions = data
+    var fns = data
       .findChildFunctions(db, searchModules)
       .order('name')
       .map(copyFunction);
 
-    return copyModule(module, functions);
+    return copyModule(module, fns);
   });
 }
 
@@ -60,12 +61,12 @@ function buildClasses(db) {
   var classes = data.findClasses(db).order('name');
 
   return classes.map(function(klass) {
-    var functions = data
+    var fns = data
       .findChildFunctions(db, [klass])
       .order('name')
       .map(copyFunction);
 
-    return copyClass(klass, functions);
+    return copyClass(klass, fns);
   });
 }
 
