@@ -1,3 +1,5 @@
+/* global env */
+
 'use strict';
 
 require('node-jsx').install({extension: '.jsx'});
@@ -70,18 +72,17 @@ function buildClasses(db) {
   });
 }
 
-// Renders the component `a` with the child component `b`.
-function render(a, b) {
-  return React.renderComponentToStaticMarkup(a(null, b));
+function renderPage(title, component) {
+  return DOCTYPE + React.renderComponentToStaticMarkup(PageComponent({title: title}, component));
 }
 
-function renderReadme(readme) {
-  return DOCTYPE + render(PageComponent, React.DOM.div({dangerouslySetInnerHTML: {__html: readme}}));
+function renderReadme(title, readme) {
+  return renderPage(title, React.DOM.div({dangerouslySetInnerHTML: {__html: readme}}));
 }
 
-function renderAPI(classes, modules) {
+function renderAPI(title, classes, modules) {
   var api = APIComponent({classes: classes, modules: modules});
-  return DOCTYPE + render(PageComponent, api);
+  return renderPage(title, api);
 }
 
 /**
@@ -92,7 +93,8 @@ function renderAPI(classes, modules) {
 exports.publish = function(db, options) {
   db({undocumented: true}).remove();
 
-  var srcDir  = path.join(__dirname, '..', 'build'),
+  var title   = env.conf.templates.title || 'JSDoc React',
+      srcDir  = path.join(__dirname, '..', 'build'),
       destDir = path.resolve(options.destination);
 
   wrench.copyDirSyncRecursive(srcDir, destDir, {
@@ -100,6 +102,6 @@ exports.publish = function(db, options) {
     preserveTimestamps: true
   });
 
-  fs.writeFileSync(path.join(destDir, 'index.html'), renderReadme(options.readme));
-  fs.writeFileSync(path.join(destDir, 'api.html'), renderAPI(buildClasses(db), buildModules(db)));
+  fs.writeFileSync(path.join(destDir, 'index.html'), renderReadme(title, options.readme));
+  fs.writeFileSync(path.join(destDir, 'api.html'), renderAPI(title + ' API', buildClasses(db), buildModules(db)));
 };
