@@ -76,13 +76,8 @@ function renderPage(title, component) {
   return DOCTYPE + React.renderComponentToStaticMarkup(PageComponent({title: title}, component));
 }
 
-function renderReadme(title, readme) {
-  return renderPage(title, React.DOM.div({dangerouslySetInnerHTML: {__html: readme}}));
-}
-
-function renderAPI(title, classes, modules) {
-  var api = APIComponent({classes: classes, modules: modules});
-  return renderPage(title, api);
+function renderPageToFile(filename, title, component) {
+  fs.writeFileSync(filename, renderPage(title, component));
 }
 
 /**
@@ -102,6 +97,20 @@ exports.publish = function(db, options) {
     preserveTimestamps: true
   });
 
-  fs.writeFileSync(path.join(destDir, 'index.html'), renderReadme(title, options.readme));
-  fs.writeFileSync(path.join(destDir, 'api.html'), renderAPI(title + ' API', buildClasses(db), buildModules(db)));
+  if (options.readme) {
+    renderPageToFile(
+      path.join(destDir, 'index.html'),
+      title,
+      React.DOM.div({dangerouslySetInnerHTML: {__html: options.readme}})
+    );
+  }
+
+  var classes = buildClasses(db),
+      modules = buildModules(db);
+
+  renderPageToFile(
+    path.join(destDir, 'api.html'),
+    title + ' API',
+    APIComponent({classes: classes, modules: modules})
+  );
 };
