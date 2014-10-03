@@ -1,3 +1,15 @@
+v0.2.0 / 2014-10-03
+===================
+
+  * Allow the page title to be specified in the jsdoc config.
+  * Update template design.
+  * Add new label.
+  * Add deprecated label.
+  * Handle readme.
+  * Handle classes.
+  * Include functions in mixed modules.
+  * Fix an issue with module name separators.
+
 v0.1.1 / 2014-09-20
 ==================
 
