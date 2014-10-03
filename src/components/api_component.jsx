@@ -26,7 +26,7 @@ module.exports = React.createClass({
       /* jshint ignore:start */
       <section className="api">
         <section className="index">
-          <h1>API</h1>
+          <h1>{this.props.title}</h1>
           <ul>{this.renderIndex()}</ul>
         </section>
         {this.renderModules(this.props.modules)}
