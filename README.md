@@ -1,8 +1,9 @@
 # JSDoc React
 
-A [JSDoc](http://usejsdoc.org) template built with
-[React](http://facebook.github.io/react/) and
-[Bootstrap](http://getbootstrap.com).
+A [JSDoc](http://usejsdoc.org) template with a clean and minimal design.
+
+Built with [React](http://facebook.github.io/react/),
+[Bootstrap](http://getbootstrap.com), and [WebPack](http://webpack.github.io).
 
 ## Examples
 
@@ -16,7 +17,7 @@ Install the npm package:
 > npm install jsdoc-react
 ```
 
-Then run JSDoc with the template:
+Run JSDoc with the template:
 
 ```sh
 > jsdoc -t jsdoc-react ...
