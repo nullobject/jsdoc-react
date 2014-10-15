@@ -33,6 +33,7 @@ function copyModule(module, fns) {
 function copyClass(klass, fns) {
   return F.copy({}, klass, {
     key:       'class-' + klass.name,
+    name:      F.replace(/\//g, '.', klass.name),
     functions: fns
   });
 }

@@ -21,7 +21,7 @@ module.exports = React.createClass({
       /* jshint ignore:start */
       <section className="class">
         <HeaderComponent name={this.props.name} summary={this.props.summary} description={this.props.description} />
-        <FunctionsComponent functions={this.props.functions} />
+        <FunctionsComponent showStaticFunctions="true" functions={this.props.functions} />
       </section>
       /* jshint ignore:end */
     );

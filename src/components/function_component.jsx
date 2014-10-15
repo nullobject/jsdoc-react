@@ -12,7 +12,7 @@ var ExampleComponent = require('./example_component'),
     ReturnsComponent = require('./returns_component');
 
 var HeaderComponent = React.createClass({
-  labels: ['curried', 'deprecated', 'new'],
+  labels: ['curried', 'deprecated', 'static'],
 
   render: function() {
     return (
@@ -67,9 +67,9 @@ module.exports = React.createClass({
         <HeaderComponent
           name={this.props.name}
           params={this.props.params}
+          static={this.static()}
           deprecated={this.deprecated()}
-          curried={this.hasTag('curried')}
-          new={this.hasTag('new')} />
+          curried={this.hasTag('curried')} />
         <p className="summary">{this.props.summary}</p>
         {this.renderDescription(this.props.description)}
         <ParamsComponent params={this.props.params} />
@@ -90,6 +90,7 @@ module.exports = React.createClass({
       /* jshint ignore:end */
     ) : null;
   },
+
   renderReturns: function(returns) {
     return returns ? ReturnsComponent({returns: returns[0]}) : null;
   },
@@ -101,6 +102,11 @@ module.exports = React.createClass({
   // Returns true if this is a deprecated function.
   deprecated: function() {
     return this.props.deprecated === true;
+  },
+
+  // Returns true if this is a static function.
+  static: function() {
+    return this.props.showStaticFunctions === 'true' && this.props.scope === 'static';
   },
 
   // Returns true if the function has the tag `t`.

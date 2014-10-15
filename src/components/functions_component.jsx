@@ -25,5 +25,12 @@ module.exports = React.createClass({
     ) : null;
   },
 
-  renderFunctions: F.map(FunctionComponent),
+  // Transfers the prop to the component.
+  transfer: function(prop, component) {
+    return F.compose(FunctionComponent, F.set(prop, this.props[prop]));
+  },
+
+  renderFunctions: function(as) {
+    return F.map(this.transfer('showStaticFunctions', FunctionComponent), as);
+  },
 });
