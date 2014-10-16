@@ -1,3 +1,11 @@
+v0.3.0 / 2014-10-16
+===================
+
+  * Update dependencies.
+  * Add static label.
+  * Readme tweaks.
+  * Rename History -> CHANGELOG.
+
 v0.2.0 / 2014-10-03
 ===================
 
