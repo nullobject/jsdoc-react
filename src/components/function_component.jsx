@@ -42,7 +42,7 @@ var HeaderComponent = React.createClass({
   },
 
   renderDefinition: function(name, params) {
-    return F.concat(name, this.renderParams(params));
+    return params ? F.concat(name, this.renderParams(params)) : name;
   },
 
   renderParams: F.compose(
