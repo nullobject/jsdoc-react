@@ -27,7 +27,7 @@ module.exports = React.createClass({
 
   // Transfers the prop to the component.
   transfer: function(prop, component) {
-    return F.compose(FunctionComponent, F.set(prop, this.props[prop]));
+    return F.compose(component, F.set(prop, this.props[prop]));
   },
 
   renderFunctions: function(as) {

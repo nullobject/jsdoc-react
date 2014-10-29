@@ -48,7 +48,6 @@ module.exports = React.createClass({
     );
   },
 
-
   renderClasses: F.map(ClassComponent),
   renderModules: F.map(ModuleComponent),
 });
