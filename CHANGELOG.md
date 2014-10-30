@@ -1,3 +1,11 @@
+v0.3.1 / 2014-10-31
+===================
+
+  * Remove jsx pragmas.
+  * Update dependencies.
+  * Handle functions without parameters.
+  * Webpack cleanups.
+
 v0.3.0 / 2014-10-16
 ===================
 
