@@ -3,8 +3,8 @@
 var F     = require('fkit'),
     React = require('react');
 
-var ClassComponent  = require('./class_component'),
-    ModuleComponent = require('./module_component');
+var ClassComponent  = React.createFactory(require('./class_component')),
+    ModuleComponent = React.createFactory(require('./module_component'));
 
 /**
  * Represents a HTML page.

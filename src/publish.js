@@ -11,8 +11,8 @@ var data   = require('./data'),
     F      = require('fkit'),
     React  = require('react');
 
-var APIComponent  = require('./components/api_component'),
-    PageComponent = require('./components/page_component');
+var APIComponent  = React.createFactory(require('./components/api_component')),
+    PageComponent = React.createFactory(require('./components/page_component'));
 
 var DOCTYPE = '<!DOCTYPE html>';
 
@@ -74,7 +74,7 @@ function buildClasses(db) {
 }
 
 function renderPage(title, component) {
-  return DOCTYPE + React.renderComponentToStaticMarkup(PageComponent({title: title}, component));
+  return DOCTYPE + React.renderToStaticMarkup(PageComponent({title: title}, component));
 }
 
 function renderPageToFile(filename, title, component) {

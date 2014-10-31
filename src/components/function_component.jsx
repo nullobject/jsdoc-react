@@ -3,11 +3,10 @@
 var F     = require('fkit'),
     React = require('react');
 
-var ExampleComponent = require('./example_component'),
-    IconComponent    = require('./icon_component'),
-    LabelComponent   = require('./label_component'),
+var ExampleComponent = React.createFactory(require('./example_component')),
+    LabelComponent   = React.createFactory(require('./label_component')),
     ParamsComponent  = require('./params_component'),
-    ReturnsComponent = require('./returns_component');
+    ReturnsComponent = React.createFactory(require('./returns_component'));
 
 var HeaderComponent = React.createClass({
   labels: ['curried', 'deprecated', 'static'],

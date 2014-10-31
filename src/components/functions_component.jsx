@@ -3,7 +3,7 @@
 var F     = require('fkit'),
     React = require('react');
 
-var FunctionComponent = require('./function_component');
+var FunctionComponent = React.createFactory(require('./function_component'));
 
 /**
  * Represents a list of functions.
