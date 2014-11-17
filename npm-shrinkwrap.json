@@ -23,12 +23,12 @@
               "dependencies": {
                 "q": {
                   "version": "1.0.1",
-                  "from": "q@>=1.0.1 <1.1.0",
+                  "from": "q@1.0.1",
                   "resolved": "https://registry.npmjs.org/q/-/q-1.0.1.tgz"
                 },
                 "recast": {
                   "version": "0.7.5",
-                  "from": "recast@>=0.7.0 <0.8.0",
+                  "from": "recast@0.7.5",
                   "resolved": "https://registry.npmjs.org/recast/-/recast-0.7.5.tgz",
                   "dependencies": {
                     "esprima-fb": {
@@ -69,17 +69,17 @@
                 },
                 "commander": {
                   "version": "2.2.0",
-                  "from": "commander@>=2.2.0 <2.3.0",
+                  "from": "commander@2.2.0",
                   "resolved": "https://registry.npmjs.org/commander/-/commander-2.2.0.tgz"
                 },
                 "graceful-fs": {
                   "version": "2.0.3",
-                  "from": "graceful-fs@>=2.0.3 <2.1.0",
+                  "from": "graceful-fs@2.0.3",
                   "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-2.0.3.tgz"
                 },
                 "glob": {
                   "version": "3.2.11",
-                  "from": "glob@>=3.2.9 <3.3.0",
+                  "from": "glob@3.2.11",
                   "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.11.tgz",
                   "dependencies": {
                     "inherits": {
@@ -108,7 +108,7 @@
                 },
                 "mkdirp": {
                   "version": "0.3.5",
-                  "from": "mkdirp@>=0.3.5 <0.4.0",
+                  "from": "mkdirp@0.3.5",
                   "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
                 },
                 "private": {
@@ -123,7 +123,7 @@
                   "dependencies": {
                     "whiskey": {
                       "version": "0.6.13",
-                      "from": "whiskey@>=0.6.0 <0.7.0",
+                      "from": "whiskey@0.6.13",
                       "resolved": "https://registry.npmjs.org/whiskey/-/whiskey-0.6.13.tgz",
                       "dependencies": {
                         "sprintf": {
@@ -177,19 +177,19 @@
                 },
                 "iconv-lite": {
                   "version": "0.2.11",
-                  "from": "iconv-lite@>=0.2.11 <0.3.0",
+                  "from": "iconv-lite@0.2.11",
                   "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.2.11.tgz"
                 }
               }
             },
             "esprima-fb": {
               "version": "6001.1.0-dev-harmony-fb",
-              "from": "esprima-fb@>=6001.1.0-dev-harmony-fb <6002.0.0",
+              "from": "esprima-fb@6001.1.0-dev-harmony-fb",
               "resolved": "https://registry.npmjs.org/esprima-fb/-/esprima-fb-6001.1.0-dev-harmony-fb.tgz"
             },
             "jstransform": {
               "version": "6.3.2",
-              "from": "jstransform@>=6.3.2 <7.0.0",
+              "from": "jstransform@6.3.2",
               "resolved": "https://registry.npmjs.org/jstransform/-/jstransform-6.3.2.tgz",
               "dependencies": {
                 "base62": {
@@ -232,7 +232,7 @@
             },
             "jstransform": {
               "version": "7.0.0",
-              "from": "jstransform@>=7.0.0 <8.0.0",
+              "from": "jstransform@7.0.0",
               "resolved": "https://registry.npmjs.org/jstransform/-/jstransform-7.0.0.tgz",
               "dependencies": {
                 "base62": {

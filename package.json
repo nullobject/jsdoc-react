@@ -41,7 +41,7 @@
     "less": "^1.7.5",
     "less-loader": "^0.7.7",
     "mocha": "^2.0.1",
-    "sinon": "^1.10.3",
+    "sinon": "^1.12.1",
     "sinon-chai": "^2.5.0",
     "style-loader": "^0.8.0",
     "url-loader": "^0.5.5",
