@@ -12,12 +12,12 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')},
-      {test: /\.jsx$/,  loader: 'jsx-loader'},
-      {test: /\.woff$/, loader: 'url-loader?limit=10000&minetype=application/font-woff'},
-      {test: /\.ttf$/,  loader: 'file-loader'},
-      {test: /\.eot$/,  loader: 'file-loader'},
-      {test: /\.svg$/,  loader: 'file-loader'}
+      {test: /\.jsx$/, exclude: /node_modules/, loaders: ['jsx', 'babel']},
+      {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!less')},
+      {test: /\.woff$/, loader: 'url?limit=10000&minetype=application/font-woff'},
+      {test: /\.ttf$/,  loader: 'file'},
+      {test: /\.eot$/,  loader: 'file'},
+      {test: /\.svg$/,  loader: 'file'}
     ]
   },
   plugins: [

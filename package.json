@@ -30,6 +30,8 @@
     "url": "https://github.com/nullobject/jsdoc-react/issues"
   },
   "devDependencies": {
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.2.0",
     "bootstrap": "^3.3.4",
     "chai": "^2.2.0",
     "css-loader": "^0.9.1",
