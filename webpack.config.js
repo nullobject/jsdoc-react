@@ -1,5 +1,7 @@
-var path              = require('path'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    path              = require('path');
+
+var exclude = /node_modules/;
 
 module.exports = {
   entry: {app: path.join(__dirname, 'src', 'app.js')},
@@ -12,9 +14,10 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.jsx$/, exclude: /node_modules/, loaders: ['jsx', 'babel']},
+      {test: /\.js$/, exclude: exclude, loader: 'babel'},
+      {test: /\.jsx$/, exclude: exclude, loaders: ['jsx', 'babel']},
       {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!less')},
-      {test: /\.woff$/, loader: 'url?limit=10000&minetype=application/font-woff'},
+      {test: /\.woff2?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf$/,  loader: 'file'},
       {test: /\.eot$/,  loader: 'file'},
       {test: /\.svg$/,  loader: 'file'}
