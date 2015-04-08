@@ -1,3 +1,9 @@
+v0.3.2 / 2015-04-08
+===================
+
+  * Update dependencies.
+  * Fix react deprecations.
+
 v0.3.1 / 2014-10-31
 ===================
 
