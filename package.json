@@ -4,10 +4,7 @@
   "description": "A JSDoc template built with React.",
   "homepage": "https://github.com/nullobject/jsdoc-react",
   "author": "Josh Bassett <josh.bassett@gmail.com> (http://joshbassett.info)",
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/nullobject/jsdoc-react/blob/master/LICENSE.md"
-  },
+  "license": "MIT",
   "keywords": [
     "jsdoc",
     "react",
