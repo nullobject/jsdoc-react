@@ -27,20 +27,20 @@
     "url": "https://github.com/nullobject/jsdoc-react/issues"
   },
   "devDependencies": {
-    "babel-core": "^5.0.9",
-    "babel-loader": "^5.0.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "bootstrap": "^3.3.4",
-    "css-loader": "^0.9.1",
-    "extract-text-webpack-plugin": "^0.5.0",
-    "file-loader": "^0.8.1",
-    "highlight.js": "^8.5.0",
-    "jsdoc": "^3.3.0-beta3",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "highlight.js": "^9.12.0",
+    "jsdoc": "^3.5.5",
     "jshint": "^2.6.3",
-    "less": "^2.5.0",
-    "less-loader": "^2.2.0",
-    "style-loader": "^0.9.0",
-    "url-loader": "^0.5.5",
-    "webpack": "^1.7.3"
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0"
   },
   "dependencies": {
     "create-react-class": "^15.6.2",
