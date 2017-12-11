@@ -14,7 +14,8 @@ module.exports = createClass({
     return (
       /* jshint ignore:start */
       <header>
-        <h2 id={this.props.name}>{this.props.name} &mdash; {this.props.summary}</h2>
+        <h2 id={this.props.name}>{this.props.name}</h2>
+        <section className="summary" dangerouslySetInnerHTML={{__html: this.props.summary}} />
         <section className="description" dangerouslySetInnerHTML={{__html: this.props.description}} />
       </header>
       /* jshint ignore:end */
