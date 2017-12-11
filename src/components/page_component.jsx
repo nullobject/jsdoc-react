@@ -1,13 +1,13 @@
-'use strict';
-
-var React = require('react');
+const F = require('fkit')
+const React = require('react')
+const createClass = require('create-react-class')
 
 /**
  * Represents a HTML page.
  *
  * @class ModuleComponent
  */
-module.exports = React.createClass({
+module.exports = createClass({
   displayName: 'PageComponent',
 
   render: function() {

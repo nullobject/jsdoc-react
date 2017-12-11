@@ -1,13 +1,12 @@
-'use strict';
-
-var React = require('react');
+const React = require('react')
+const createClass = require('create-react-class')
 
 /**
  * Represents a label.
  *
  * @class LabelComponent
  */
-module.exports = React.createClass({
+module.exports = createClass({
   displayName: 'LabelComponent',
 
   render: function() {

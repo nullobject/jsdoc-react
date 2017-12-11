@@ -4,17 +4,17 @@
 
 require('node-jsx').install({extension: '.jsx'});
 
-var data   = require('./data'),
-    fs     = require('fs'),
-    path   = require('path'),
-    wrench = require('wrench'),
-    F      = require('fkit'),
-    React  = require('react');
+const F = require('fkit')
+const React = require('react')
+const ReactDOMServer = require('react-dom/server')
+const data = require('./data')
+const fs = require('fs-extra')
+const path = require('path')
 
-var APIComponent  = React.createFactory(require('./components/api_component')),
-    PageComponent = React.createFactory(require('./components/page_component'));
+const APIComponent  = React.createFactory(require('./components/api_component'))
+const PageComponent = React.createFactory(require('./components/page_component'))
 
-var DOCTYPE = '<!DOCTYPE html>';
+const DOCTYPE = '<!DOCTYPE html>'
 
 function copyFunction(fn) {
   return F.copy({
@@ -74,7 +74,7 @@ function buildClasses(db) {
 }
 
 function renderPage(title, component) {
-  return DOCTYPE + React.renderToStaticMarkup(PageComponent({title: title}, component));
+  return DOCTYPE + ReactDOMServer.renderToStaticMarkup(PageComponent({title: title}, component));
 }
 
 function renderPageToFile(filename, title, component) {
@@ -85,7 +85,7 @@ function publishReadme(filename, title, readme) {
   renderPageToFile(
     filename,
     title,
-    React.DOM.div({dangerouslySetInnerHTML: {__html: readme}})
+    React.createElement('div', {dangerouslySetInnerHTML: {__html: readme}})
   );
 }
 
@@ -112,7 +112,7 @@ exports.publish = function(db, options) {
       srcDir  = path.join(__dirname, '..', 'build'),
       destDir = path.resolve(options.destination);
 
-  wrench.copyDirSyncRecursive(srcDir, destDir, {
+  fs.copySync(srcDir, destDir, {
     forceDelete:        true,
     preserveTimestamps: true
   });

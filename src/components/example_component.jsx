@@ -1,13 +1,12 @@
-'use strict';
-
-var React = require('react');
+const React = require('react')
+const createClass = require('create-react-class')
 
 /**
  * Represents a code example.
  *
  * @class ExampleComponent
  */
-module.exports = React.createClass({
+module.exports = createClass({
   render: function() {
     return (
       /* jshint ignore:start */

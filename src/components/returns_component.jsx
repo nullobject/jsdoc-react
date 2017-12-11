@@ -1,14 +1,13 @@
-'use strict';
-
-var F     = require('fkit'),
-    React = require('react');
+const F = require('fkit')
+const React = require('react')
+const createClass = require('create-react-class')
 
 /**
  * Represents a return value.
  *
  * @class ReturnsComponent
  */
-module.exports = React.createClass({
+module.exports = createClass({
   displayName: 'ReturnsComponent',
 
   render: function() {

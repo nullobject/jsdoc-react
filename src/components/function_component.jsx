@@ -1,14 +1,15 @@
 'use strict';
 
-var F     = require('fkit'),
-    React = require('react');
+const F = require('fkit')
+const React = require('react')
+const createClass = require('create-react-class')
 
-var ExampleComponent = React.createFactory(require('./example_component')),
-    LabelComponent   = React.createFactory(require('./label_component')),
-    ParamsComponent  = require('./params_component'),
-    ReturnsComponent = React.createFactory(require('./returns_component'));
+const ExampleComponent = React.createFactory(require('./example_component'))
+const LabelComponent = React.createFactory(require('./label_component'))
+const ParamsComponent = require('./params_component')
+const ReturnsComponent = React.createFactory(require('./returns_component'))
 
-var HeaderComponent = React.createClass({
+var HeaderComponent = createClass({
   labels: ['curried', 'deprecated', 'static'],
 
   render: function() {
@@ -54,7 +55,7 @@ var HeaderComponent = React.createClass({
  *
  * @class FunctionComponent
  */
-module.exports = React.createClass({
+module.exports = createClass({
   displayName: 'FunctionComponent',
 
   render: function() {

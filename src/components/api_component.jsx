@@ -1,23 +1,17 @@
-'use strict';
+const F = require('fkit')
+const React = require('react')
+const createClass = require('create-react-class')
 
-var F     = require('fkit'),
-    React = require('react');
-
-var ClassComponent  = React.createFactory(require('./class_component')),
-    ModuleComponent = React.createFactory(require('./module_component'));
+const ClassComponent = React.createFactory(require('./class_component'))
+const ModuleComponent = React.createFactory(require('./module_component'))
 
 /**
  * Represents a HTML page.
  *
  * @class PageComponent
  */
-module.exports = React.createClass({
+module.exports = createClass({
   displayName: 'PageComponent',
-
-  propTypes: {
-    classes: React.PropTypes.array.isRequired,
-    modules: React.PropTypes.array.isRequired,
-  },
 
   render: function() {
     return (
@@ -41,7 +35,7 @@ module.exports = React.createClass({
   renderAnchor: function(item) {
     return (
       /* jshint ignore:start */
-      <li key={item.key}><a href={'#' + item.name}>{item.name} &mdash; {item.summary}</a></li>
+      <li key={item.key}><a href={'#' + item.name}>{item.name}</a></li>
       /* jshint ignore:end */
     );
   },

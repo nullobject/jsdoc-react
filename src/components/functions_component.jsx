@@ -1,16 +1,15 @@
-'use strict';
+const F = require('fkit')
+const React = require('react')
+const createClass = require('create-react-class')
 
-var F     = require('fkit'),
-    React = require('react');
-
-var FunctionComponent = React.createFactory(require('./function_component'));
+const FunctionComponent = React.createFactory(require('./function_component'))
 
 /**
  * Represents a list of functions.
  *
  * @class FunctionsComponent
  */
-module.exports = React.createClass({
+module.exports = createClass({
   displayName: 'FunctionsComponent',
 
   render: function() {

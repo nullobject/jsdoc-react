@@ -1,17 +1,16 @@
-'use strict';
+const F = require('fkit')
+const React = require('react')
+const createClass = require('create-react-class')
 
-var F     = require('fkit'),
-    React = require('react');
-
-var FunctionsComponent = require('./functions_component'),
-    HeaderComponent    = require('./header_component');
+const FunctionsComponent = require('./functions_component')
+const HeaderComponent = require('./header_component')
 
 /**
  * Represents a module definition.
  *
  * @class ModuleComponent
  */
-module.exports = React.createClass({
+module.exports = createClass({
   displayName: 'ModuleComponent',
 
   render: function() {
