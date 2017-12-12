@@ -1,5 +1,3 @@
-'use strict';
-
 const F = require('fkit')
 const React = require('react')
 const createClass = require('create-react-class')
@@ -9,7 +7,7 @@ const LabelComponent = React.createFactory(require('./label_component'))
 const ParamsComponent = require('./params_component')
 const ReturnsComponent = React.createFactory(require('./returns_component'))
 
-var HeaderComponent = createClass({
+const HeaderComponent = createClass({
   labels: ['curried', 'deprecated', 'static'],
 
   render: function() {
@@ -26,9 +24,9 @@ var HeaderComponent = createClass({
   },
 
   renderLabels: function() {
-    var self = this;
+    const self = this;
 
-    var as = this.labels.reduce(function(a, b) {
+    const as = this.labels.reduce(function(a, b) {
       return (self.props[b] === true) ? F.append(self.renderLabel(b), a) : a;
     }, []);
 
@@ -109,7 +107,7 @@ module.exports = createClass({
 
   // Returns true if the function has the tag `t`.
   hasTag: function(t) {
-    var title = function(a) { return F.compose(F.eq(a), F.get('title')); };
+    const title = function(a) { return F.compose(F.eq(a), F.get('title')); };
     return F.any(title(t), this.props.tags || []);
   },
 });

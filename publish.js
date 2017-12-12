@@ -1,3 +1,1 @@
-'use strict';
-
-exports.publish = require('./src/publish').publish;
+exports.publish = require('./src/publish').publish

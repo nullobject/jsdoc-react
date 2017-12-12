@@ -29,7 +29,7 @@ unit:
 
 # Runs jslint.
 lint:
-	@node_modules/.bin/jshint src
+	@node_modules/.bin/standard "*.js" "src/**/*.js"
 
 # Bumps the version of the bower and npm packages.
 bump:

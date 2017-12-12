@@ -11,7 +11,7 @@ module.exports = createClass({
   displayName: 'ReturnsComponent',
 
   render: function() {
-    var returns = this.props.returns;
+    const returns = this.props.returns;
     return this.props.returns ? (
       /* jshint ignore:start */
       <section className="returns">

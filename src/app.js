@@ -1,7 +1,5 @@
-'use strict';
+require('./style.less')
 
-require('./style.less');
+const hl = require('highlight.js')
 
-var hl = require('highlight.js');
-
-hl.initHighlightingOnLoad();
+hl.initHighlightingOnLoad()
