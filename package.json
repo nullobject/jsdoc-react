@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "create-react-class": "^15.6.2",
-    "fkit": "^0.17.1",
+    "fkit": "^1.1.0",
     "fs-extra": "^5.0.0",
     "node-jsx": "^0.13.3",
     "react": "^16.2.0",
