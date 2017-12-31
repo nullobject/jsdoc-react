@@ -1,3 +1,12 @@
+v1.0.0 / 2017-12-31
+===================
+
+  * Update fkit to 1.1.0
+  * Update webpack to 3.10.0
+  * Update react to 16.2.0
+  * Move summary into a new section
+  * Format the license in package.json to match the SPDX standard
+
 v0.3.2 / 2015-04-08
 ===================
 
