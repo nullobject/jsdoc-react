@@ -7,6 +7,7 @@ const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 const data = require('./data')
 const fs = require('fs-extra')
+const helper = require('jsdoc/util/templateHelper')
 const path = require('path')
 
 const APIComponent = React.createFactory(require('./components/api_component'))
@@ -104,7 +105,7 @@ function publishAPI (filename, title, db) {
  * @author Josh Bassett
  */
 exports.publish = function (db, options) {
-  db({undocumented: true}).remove()
+  db = helper.prune(db)
 
   const title = env.conf.templates.title || 'JSDoc React'
   const srcDir = path.join(__dirname, '..', 'build')
