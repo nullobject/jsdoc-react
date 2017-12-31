@@ -35,7 +35,7 @@ module.exports = createClass({
   renderAnchor: function(item) {
     return (
       /* jshint ignore:start */
-      <li key={item.key}><a href={'#' + item.name}>{item.name}</a></li>
+      <li key={item.key}><a href={'#' + item.name}>{item.name} &mdash; {item.summary}</a></li>
       /* jshint ignore:end */
     );
   },
